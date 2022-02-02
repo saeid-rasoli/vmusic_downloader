@@ -3,16 +3,18 @@ import os
 import re
 import requests
 
+
 def main():
     '''
-        download musics from playlists of vmusic.ir, by changing the playlist
-        you can download any playlists is avalable in this website
+    download musics from playlists of vmusic.ir, by changing the playlist
+    you can download any playlists is avalable in this website
     '''
     playlist = 'peaceful-piano-vol-11'
     req = requests.get(f'https://vmusic.ir/playlist/{playlist}/')
     file_name = f'{playlist}_need_fix.txt'
     get_musics_and_write(file_name, req)
     fix_file_and_downlad_musics(playlist, file_name)
+
 
 def get_musics_and_write(file_name, req):
     soup = BeautifulSoup(req.content, 'html.parser')
@@ -27,11 +29,15 @@ def get_musics_and_write(file_name, req):
                     f.write(j)
                     f.write('\n')
 
+
 def fix_file_and_downlad_musics(playlist, file_name):
     path = '/home/core/mydir/music'
     os.system(f'uniq {file_name} > {playlist}.txt')
     os.system(f'mkdir {path}/{playlist}')
-    os.system(f'wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 0 -P {path}/{playlist} -i {playlist}.txt')
+    os.system(
+        f'wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 0 -P {path}/{playlist} -i {playlist}.txt'
+    )
+
 
 if __name__ == '__main__':
     main()
