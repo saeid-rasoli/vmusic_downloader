@@ -5,4 +5,4 @@ for example you have (https://vmusic.ir/playlist/peaceful-piano-vmusic-playlist/
 
 > needed packages
 * `wget` for downloading files
-* BeautifulSoup 
+* BeautifulSoup python package
