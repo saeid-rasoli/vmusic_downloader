@@ -9,7 +9,7 @@ def main():
     download musics from playlists of vmusic.ir, by changing the playlist
     you can download any playlists is avalable in this website
     '''
-    playlist = 'peaceful-piano-vol-11'
+    playlist = input('enter your playlist name:')
     req = requests.get(f'https://vmusic.ir/playlist/{playlist}/')
     file_name = f'{playlist}_need_fix.txt'
     get_musics_and_write(file_name, req)
